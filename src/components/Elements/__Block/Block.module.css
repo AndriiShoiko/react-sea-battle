@@ -1,0 +1,21 @@
+.block {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 26px;
+    float: left;
+    margin: 0.5px;
+    border: 0.5px solid rgb(0, 217, 255);
+}
+
+.hit{
+    background-color: red;
+}
+
+.past{
+    background-color: green;
+}
+
+.block:hover{
+    border-color: red;
+}
