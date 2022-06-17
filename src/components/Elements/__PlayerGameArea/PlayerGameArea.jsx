@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import LineBlock from '../__LineBlock/LineBlock';
+import ModelShip from '../__ModelShip/ModelShip';
 import { getPlayerObject } from './gameArea';
 import classes from './PlayerGameArea.module.css'
 
@@ -38,9 +39,10 @@ const PlayerGameArea = () => {
             {
                 mGameArea.map((e, i) => {
                     return <LineBlock shot={shot} arrElements={e} key={i} />
-                }
-                )
+                })
             }
+            <ModelShip/>
+            <ModelShip/>
         </div>
     )
 }

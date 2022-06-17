@@ -1,0 +1,8 @@
+
+.ModelBlock{
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    float: left;
+    margin: 2px;
+}
