@@ -6,3 +6,7 @@
     float: left;
     margin: 2px;
 }
+
+.ShipIsSunk{
+    background-color: red;
+}

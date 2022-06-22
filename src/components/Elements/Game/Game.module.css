@@ -1,0 +1,6 @@
+.Game{
+    margin: auto auto;
+    width: 900px;
+    min-width: 900px;
+    overflow: auto;
+}

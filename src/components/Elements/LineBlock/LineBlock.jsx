@@ -1,5 +1,5 @@
 import React from 'react'
-import Block from '../__Block/Block'
+import Block from '../Block/Block'
 import classes from './LineBlock.module.css'
 
 const LineBlock = (props) => {

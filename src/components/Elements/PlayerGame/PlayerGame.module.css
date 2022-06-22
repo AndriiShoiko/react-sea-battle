@@ -1,0 +1,23 @@
+/*.PlayerGame{
+    
+}*/
+
+.PlayerGame:nth-child(1){
+    float: left;
+}
+
+.PlayerGame:nth-child(2){
+    float: right;
+}
+
+.isLock{
+    pointer-events: none;
+}
+
+.endGame{
+    background-color: darkgrey;
+}
+
+.isMove{
+    background-color: blanchedalmond;
+}

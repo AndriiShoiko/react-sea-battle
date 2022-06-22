@@ -20,7 +20,9 @@ const Block = (props) => {
 
   return (
     <div className={setClasses(props.gameBlock)}
-      onClick={(e) => props.shot(props.gameBlock)}>
+      onClick={(e) => {
+        props.shot(props.gameBlock)
+      }}>
       {props.caption}
     </div>
   )

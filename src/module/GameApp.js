@@ -7,12 +7,40 @@ class Ship {
     }
 }
 
-class GameBlock {
+export class GameBlock {
     constructor(ship, isHeader = false, caption = '') {
         this.ship = ship;
         this.isHeader = isHeader;
         this.isShot = false;
         this.caption = caption;
+    }
+
+    static processShot(gameBlock, gameState) {
+
+        if (gameBlock.isShot || gameBlock.isHeader) {
+            return;
+        } else {
+            gameBlock.isShot = true;
+            if (gameBlock.ship !== null) {
+
+                const ship = gameBlock.ship;
+                ship.countShotPart += 1;
+                if (ship.countPart === ship.countShotPart) {
+                    ship.isSunk = true;
+                }
+
+                gameState.whoseMove.countShots++;
+            } else {
+                if (gameState.whoseMove === gameState.Player1) {
+                    gameState.whoseMove = gameState.Player2;
+                } else {
+                    gameState.whoseMove = gameState.Player1;
+                }
+            }
+            if(gameState.Player1.isWin() || gameState.Player2.isWin()){
+                gameState.endGame = true;
+            }
+        }
     }
 }
 
@@ -26,6 +54,9 @@ class GamePlayer {
         this.mShip1 = [new Ship(1), new Ship(1), new Ship(1), new Ship(1)];
 
         this.mArea = [];
+
+        this.countShipBlock = 20;
+        this.countShots = 0;
     }
 
     isHeader(str) {
@@ -40,6 +71,10 @@ class GamePlayer {
             return true;
         }
         return false;
+    }
+
+    isWin() {
+        return this.countShots === this.countShipBlock;
     }
 
     setArea(mAreaScheme) {
@@ -59,7 +94,18 @@ class GamePlayer {
     }
 }
 
-export const getPlayerObject = () => {
+class Game {
+
+    constructor(Player1, Player2) {
+        this.Player1 = Player1;
+        this.Player2 = Player2;
+        this.whoseMove = this.Player1;
+        this.endGame = false;
+    }
+
+}
+
+function getPlayerObject(name) {
 
     let mAreaScheme = [
         ['X', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
@@ -75,9 +121,13 @@ export const getPlayerObject = () => {
         ['10', '', '', '', '', '', '', '', '', '', '']
     ];
 
-    let Player = new GamePlayer("Andrii");
+    let Player = new GamePlayer(name);
     Player.setArea(mAreaScheme);
 
     return Player;
 
+}
+
+export function getGameObj() {
+    return new Game(getPlayerObject("Player 1"), getPlayerObject("Player 2"));
 }
